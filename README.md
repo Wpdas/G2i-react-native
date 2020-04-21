@@ -1,18 +1,18 @@
 - Setup ESLint, Prettier and Typescript; - OK
-- Install Styled Components Lib;
-- Install @Types;
-- Convert all files to .tsx;
-- Setup babel for suport ts import bases;
-- Setup GraphQL and API;
-- Setup ThemeProvider (Colors, custom fonts, etc);
+- Install Styled Components Lib; - OK
+- Install @Types; - OK
+- Convert all files to .tsx / .ts; - OK
+- Setup babel for suport ts import bases; - OK
+- Setup ThemeProvider (Colors, custom fonts, etc); - OK
+- Setup .gitignore properly; - OK
+- Setup API; - OK
 - Setup the Router (navigator);
 - Create Business Rule using Redux;
 - Create Home;
 - Create Quiz;
 - Create Results;
 - Create tests with Jest;
-- Create icons;
-- Setup .gitignore properly.
+- Create icons.
 
 ## Must be included here
 
