@@ -43,8 +43,8 @@ type Props = {
   children: React.ReactNode;
 };
 
-const Theme: React.FC<Props> = ({ children }: Props) => {
+const CustomThemeProvider: React.FC<Props> = ({ children }: Props) => {
   return <ThemeProvider theme={defaultValue}>{children}</ThemeProvider>;
 };
 
-export default Theme;
+export default CustomThemeProvider;

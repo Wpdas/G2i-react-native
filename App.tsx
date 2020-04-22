@@ -1,14 +1,17 @@
+import 'react-native-gesture-handler';
 import React from 'react';
-import Home from '@screens/Home';
-import { store } from '@redux/';
-import { Provider } from 'react-redux';
+import Routes from '@routes';
+import ReduxProvider from '@store';
+import CustomThemeProvider from '@theme';
 
 export default class App extends React.Component {
   render() {
     return (
-      <Provider store={store}>
-        <Home />
-      </Provider>
+      <ReduxProvider>
+        <CustomThemeProvider>
+          <Routes />
+        </CustomThemeProvider>
+      </ReduxProvider>
     );
   }
 }

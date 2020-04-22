@@ -13,8 +13,13 @@ interface QuestionsResult {
   readonly incorrect_answers: Array<string>;
 }
 
-interface QuestionsResponse {
+interface ResponseProps {
   readonly response_code: number;
+  readonly results: Array<QuestionsResult>;
+}
+
+export interface QuestionsResponse {
+  readonly responseCode: number;
   readonly results: Array<QuestionsResult>;
 }
 
@@ -23,9 +28,21 @@ interface QuestionsResponse {
  * @param amount Amount of questions
  */
 const getQuestions = async ({ amount = 10 }: QuestionsQueryProps) => {
-  return Api.get<QuestionsResponse>(
+  const { status, data } = await Api.get<ResponseProps>(
     `?amount=${amount}&difficulty=hard&type=boolean`,
   );
+
+  if (status === 200) {
+    return {
+      responseCode: data.response_code,
+      results: data.results,
+    } as QuestionsResponse;
+  }
+
+  return {
+    responseCode: data.response_code,
+    results: [],
+  } as QuestionsResponse;
 };
 
 export default getQuestions;
