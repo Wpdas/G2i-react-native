@@ -12,7 +12,7 @@ const reducers = combineReducers({
 
 export type ReducersState = ReturnType<typeof reducers>;
 
-// Store (+ thunk to allow dispatch actions)
+// Store (plus thunk middleware to allow dispatch actions)
 const store = createStore(reducers, applyMiddleware(thunk));
 
 // Provider

@@ -2,14 +2,16 @@ import styled from 'styled-components/native';
 import { ScrollViewProps } from 'react-native';
 
 export const ScoreContent = styled.View`
-  background: #ffffff20;
-  height: 50%;
+  height: 60%;
+  border-bottom-color: #5c4ba9;
+  border-bottom-width: 1px;
+  padding-bottom: 32px;
 `;
 
 export const ScoreScroll = styled.ScrollView.attrs<ScrollViewProps>({
   contentContainerStyle: {
-    paddingLeft: 10,
-    paddingRight: 10,
+    paddingLeft: 0,
+    paddingRight: 0,
   },
 })``;
 
@@ -18,25 +20,16 @@ export const ScoreItem = styled.View`
   padding: 16px;
 `;
 
-// Set Positive or negative image using props
-export const ScoreItemImage = styled.Image``;
+export const IconWrapper = styled.View`
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  margin-right: 8px;
+`;
 
 export const ScoreItemText = styled.Text`
-  font-size: 20px;
+  font-size: 15px;
   color: #ffffff;
-`;
-
-export const PlayAgainButton = styled.TouchableOpacity`
-  justify-content: center;
-  border-width: 1px;
-  border-color: #ffff;
-  align-items: center;
-  padding: 22px 20%;
-  margin-bottom: 20px;
-`;
-
-export const PlayAgainButtonText = styled.Text`
-  color: #ffffff;
-  font-weight: bold;
-  font-size: 16px;
+  font-family: 'VarelaRound-Regular';
+  flex: 8;
 `;

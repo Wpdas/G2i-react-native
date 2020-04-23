@@ -1,24 +1,18 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { XmlEntities } from 'html-entities';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 import { RouteNavigationProps, routes } from '@routes';
-import GradientContainer from '@components/GradientContainer';
 import Container from '@components/Container';
 import Header from '@components/Header';
+import Card from '@components/Card';
 
 import { ReducersState } from '@store/index';
 import { QuestionsState, Answer } from '@store/questions/types';
 import * as questionsActions from '@store/questions/action';
 
-import {
-  Card,
-  CardDescription,
-  Step,
-  Options,
-  TrueButton,
-  FalseButton,
-} from './styles';
+import { Step, Options, TrueButton, FalseButton } from './styles';
 
 // Used for decode html texts
 const entities: XmlEntities = new XmlEntities();
@@ -33,6 +27,7 @@ const Quiz: React.FC<QuizProps> = ({ navigation }: QuizProps) => {
   const { questionsList } = useSelector<ReducersState, QuestionsState>(
     (state) => state.questions,
   );
+
   const { category, question, correctAnswer } = questionsList[questionIndex];
   const currentQuestionIndex = questionIndex + 1;
   const totalQuestions = questionsList.length;
@@ -63,21 +58,21 @@ const Quiz: React.FC<QuizProps> = ({ navigation }: QuizProps) => {
   };
 
   return (
-    <GradientContainer colors={['#24A1AF', '#73C6CD']}>
-      <Container>
-        <Header>{entities.decode(category)}</Header>
-        <Card>
-          <CardDescription>{entities.decode(question)}</CardDescription>
-        </Card>
-        <Step>
-          {currentQuestionIndex} of {totalQuestions}
-        </Step>
-        <Options>
-          <TrueButton onPress={handlerOnPressTrueOption}></TrueButton>
-          <FalseButton onPress={handlerOnPressFalseOption}></FalseButton>
-        </Options>
-      </Container>
-    </GradientContainer>
+    <Container>
+      <Header>{entities.decode(category)}</Header>
+      <Card>{entities.decode(question)}</Card>
+      <Step>
+        {currentQuestionIndex} of {totalQuestions}
+      </Step>
+      <Options>
+        <FalseButton onPress={handlerOnPressFalseOption}>
+          <Icon name="times" size={50} color="#E1656D" />
+        </FalseButton>
+        <TrueButton onPress={handlerOnPressTrueOption}>
+          <Icon name="check" size={50} color="#4ACCA8" />
+        </TrueButton>
+      </Options>
+    </Container>
   );
 };
 

@@ -1,6 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { ThemeProvider, ThemedStyledProps } from 'styled-components';
+import { AppLoading } from 'expo';
+
 import light from './light';
+import fetchFonts from './fetchFonts';
 
 export type Theme = {
   readonly nubankColor1: string;
@@ -16,10 +19,6 @@ export type Theme = {
   readonly secondaryTextColor: string;
   readonly tertiaryTextColor: string;
   readonly regularFont: string;
-  readonly lightFont: string;
-  readonly semiBoldFont: string;
-  readonly boldFont: string;
-  readonly blackFont: string;
 };
 
 /** List of themes */
@@ -30,6 +29,7 @@ export const themes = {
 // Using this style to allow use anothers props in the future
 export type ThemeContextValue = {
   readonly current: Theme;
+  readonly fontLoaded?: boolean;
 };
 
 const defaultValue: ThemeContextValue = {
@@ -44,7 +44,22 @@ type Props = {
 };
 
 const CustomThemeProvider: React.FC<Props> = ({ children }: Props) => {
-  return <ThemeProvider theme={defaultValue}>{children}</ThemeProvider>;
+  const [fontLoaded, setFontLoaded] = useState(false);
+  const handlerOnAppLoads = () => setFontLoaded(true);
+
+  if (!fontLoaded) {
+    return (
+      <AppLoading startAsync={fetchFonts} onFinish={handlerOnAppLoads}>
+        <ThemeProvider theme={defaultValue}>{children}</ThemeProvider>
+      </AppLoading>
+    );
+  }
+
+  return (
+    <ThemeProvider theme={{ ...defaultValue, fontLoaded }}>
+      {children}
+    </ThemeProvider>
+  );
 };
 
 export default CustomThemeProvider;

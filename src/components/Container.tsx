@@ -7,10 +7,12 @@ import {
 
 const Container = styled.View`
   flex: 1;
-  padding: 0 24px;
+  padding-left: 24px;
+  padding-right: 24px;
   justify-content: space-around;
   padding-top: ${getStatusBarHeight()}px;
-  padding-bottom: ${getBottomSpace() + 20}px;
+  padding-bottom: ${getBottomSpace()}px;
+  background: #3c3272;
 `;
 
 export default Container;

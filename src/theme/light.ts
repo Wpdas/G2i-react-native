@@ -13,11 +13,7 @@ const light: Theme = {
   primaryTextColor: '#333333',
   secondaryTextColor: '#ffffff',
   tertiaryTextColor: '#7e7e7e',
-  regularFont: 'NunitoSans-Regular',
-  lightFont: 'NunitoSans-Light',
-  semiBoldFont: 'NunitoSans-SemiBold',
-  boldFont: 'NunitoSans-Bold',
-  blackFont: 'NunitoSans-Black',
+  regularFont: 'VarelaRound-Regular',
 };
 
 export default light;

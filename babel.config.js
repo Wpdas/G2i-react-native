@@ -9,7 +9,7 @@ module.exports = function (api) {
           extensions: ['.ts', '.tsx', '.json'],
           alias: {
             '@components': './src/components',
-            '@assets': './assets',
+            '@assets': './src/assets',
             '@theme': './src/theme/index.tsx',
             '@screens': './src/screens/',
             '@store': './src/store/',

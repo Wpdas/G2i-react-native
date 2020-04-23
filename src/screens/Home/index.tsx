@@ -3,22 +3,16 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Alert } from 'react-native';
 
 import { RouteNavigationProps, routes } from '@routes';
-import GradientContainer from '@components/GradientContainer';
 import Container from '@components/Container';
 import Header from '@components/Header';
+import Card from '@components/Card';
+import Button from '@components/Button';
 
 import { ReducersState } from '@store/index';
 import { QuestionsState } from '@store/questions/types';
 import * as questionsActions from '@store/questions/action';
 
-import {
-  Card,
-  CardDescription,
-  Text,
-  BeginButton,
-  BeginButtonText,
-  Loading,
-} from './styles';
+import { Text, Loading } from './styles';
 
 interface HomeProps {
   navigation: RouteNavigationProps;
@@ -56,24 +50,18 @@ const Home: React.FC<HomeProps> = ({ navigation }: HomeProps) => {
   };
 
   return (
-    <GradientContainer colors={['#24A1AF', '#73C6CD']}>
-      <Container>
-        <Header>Welcome to the Trivia Challenge!</Header>
-        <Card>
-          <CardDescription>
-            You will be presented with 10 True or False questions.
-          </CardDescription>
-        </Card>
-        <Text>Can you score 100%?</Text>
-        {pending ? (
-          <Loading />
-        ) : (
-          <BeginButton onPress={handlerOnBeginButtonPress}>
-            <BeginButtonText>BEGIN</BeginButtonText>
-          </BeginButton>
-        )}
-      </Container>
-    </GradientContainer>
+    <Container>
+      <Header>Welcome to the Trivia Challenge!</Header>
+      <Card light iconName="leanpub">
+        You will be presented with 10 True or False questions.
+      </Card>
+      <Text>Can you score 100%?</Text>
+      {pending ? (
+        <Loading />
+      ) : (
+        <Button onPress={handlerOnBeginButtonPress}>BEGIN</Button>
+      )}
+    </Container>
   );
 };
 

@@ -2,17 +2,16 @@ import styled from 'styled-components/native';
 
 export const Container = styled.View`
   align-items: center;
-  /* background: #478ca4; */
-  /* padding: 30px 20%; */
-  /* border-bottom-left-radius: 20px; */
-  /* border-bottom-right-radius: 20px; */
-  /* height: 20%; */
+  justify-content: center;
+  padding: 25px 2px;
+  height: 118px;
+  border-bottom-color: #5c4ba9;
+  border-bottom-width: 1px;
 `;
 
 export const Title = styled.Text`
   font-size: 24px;
-  font-weight: bold;
-  margin-top: 25px;
   text-align: center;
-  color: #ffffff;
+  color: #e7e4f1;
+  font-family: 'VarelaRound-Regular';
 `;

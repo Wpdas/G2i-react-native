@@ -1,24 +1,23 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { XmlEntities } from 'html-entities';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 import { RouteNavigationProps, routes } from '@routes';
-import GradientContainer from '@components/GradientContainer';
 import Container from '@components/Container';
 import Header from '@components/Header';
+import Button from '@components/Button';
 
 import { ReducersState } from '@store/index';
 import { QuestionsState } from '@store/questions/types';
 import * as questionsActions from '@store/questions/action';
 
 import {
-  PlayAgainButton,
-  PlayAgainButtonText,
   ScoreContent,
   ScoreScroll,
   ScoreItem,
   ScoreItemText,
-  // ScoreItemImage,
+  IconWrapper,
 } from './styles';
 
 // Used for decode html texts
@@ -41,33 +40,39 @@ const Results: React.FC<ResultsProps> = ({ navigation }: ResultsProps) => {
 
   const scoreItems = inGameAnswers.map((answer, index) => (
     <ScoreItem key={index}>
-      {/* <ScoreItemImage /> */}
-      <ScoreItemText>
-        {answer.isAnswerCorrect ? 'P' : 'N'} -{' '}
-        {entities.decode(answer.question)}
-      </ScoreItemText>
+      {answer.isAnswerCorrect ? (
+        <IconWrapper>
+          <Icon name="check" size={22} color="#4ACCA8" />
+        </IconWrapper>
+      ) : (
+        <IconWrapper>
+          <Icon name="times" size={22} color="#E1656D" />
+        </IconWrapper>
+      )}
+      <ScoreItemText>{entities.decode(answer.question)}</ScoreItemText>
     </ScoreItem>
   ));
 
+  useEffect(() => {
+    return () => {
+      dispatch(questionsActions.clearData());
+    };
+  });
+
   const handlerOnPressPlayAgain = () => {
-    dispatch(questionsActions.clearData());
     navigation.navigate(routes.Home);
   };
 
   return (
-    <GradientContainer colors={['#24A1AF', '#73C6CD']}>
-      <Container>
-        <Header>
-          You scored {correctAnswers} / {totalAnswers}
-        </Header>
-        <ScoreContent>
-          <ScoreScroll>{scoreItems}</ScoreScroll>
-        </ScoreContent>
-        <PlayAgainButton onPress={handlerOnPressPlayAgain}>
-          <PlayAgainButtonText>PLAY AGAIN ?</PlayAgainButtonText>
-        </PlayAgainButton>
-      </Container>
-    </GradientContainer>
+    <Container>
+      <Header>
+        You scored {correctAnswers} / {totalAnswers}
+      </Header>
+      <ScoreContent>
+        <ScoreScroll>{scoreItems}</ScoreScroll>
+      </ScoreContent>
+      <Button onPress={handlerOnPressPlayAgain}>PLAY AGAIN ?</Button>
+    </Container>
   );
 };
 
