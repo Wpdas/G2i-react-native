@@ -3,16 +3,22 @@
 - Install @Types; - OK
 - Convert all files to .tsx / .ts; - OK
 - Setup babel for suport ts import bases; - OK
-- Setup ThemeProvider (Colors, custom fonts, etc); - OK
+- Setup ThemeProvider (Colors, custom fonts, etc); - IN PROGRESS
 - Setup .gitignore properly; - OK
 - Setup API; - OK
-- Setup the Router (navigator);
-- Create Business Rule using Redux;
-- Create Home;
-- Create Quiz;
-- Create Results;
-- Create tests with Jest;
-- Create icons.
+- Setup the Router (navigator); - OK
+- Create Business Rule using Redux; - OK
+- Create Home; - OK
+- Create Quiz; - OK
+- Create Results; - OK
+- Developing of the core game; - IN PROGRESS
+- Improve the UI;
+- Create tests with Jest; ?
+- Create icons; ?
+- Write README.md.
+
+- Testar erro ao carregar dados (Redux error) e exibir Alerta - OK
+- Checar os textos decodificados pelo Entities
 
 ## Must be included here
 

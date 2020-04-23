@@ -1,9 +1,17 @@
 import styled from 'styled-components/native';
+import { ScrollViewProps } from 'react-native';
 
-export const ScoreTable = styled.View`
+export const ScoreContent = styled.View`
   background: #ffffff20;
   height: 50%;
 `;
+
+export const ScoreScroll = styled.ScrollView.attrs<ScrollViewProps>({
+  contentContainerStyle: {
+    paddingLeft: 10,
+    paddingRight: 10,
+  },
+})``;
 
 export const ScoreItem = styled.View`
   flex-direction: row;

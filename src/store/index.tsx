@@ -1,6 +1,7 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import { createStore, combineReducers } from 'redux';
+import { createStore, combineReducers, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
 
 import questionsReducer from './questions/reducer';
 
@@ -9,8 +10,10 @@ const reducers = combineReducers({
   questions: questionsReducer,
 });
 
-// Store
-const store = createStore(reducers);
+export type ReducersState = ReturnType<typeof reducers>;
+
+// Store (+ thunk to allow dispatch actions)
+const store = createStore(reducers, applyMiddleware(thunk));
 
 // Provider
 interface ReduxProviderProps {

@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { BackHandler } from 'react-native';
 import { NavigationContainer, ParamListBase } from '@react-navigation/native';
 import {
   createStackNavigator,
@@ -20,14 +21,24 @@ export const routes = {
 };
 
 const Routes: React.FC = () => {
+  const handlerBackButtonPress = () => true;
+
+  useEffect(() => {
+    // Disable go back action
+    BackHandler.addEventListener('hardwareBackPress', handlerBackButtonPress);
+
+    return () => {
+      BackHandler.removeEventListener(
+        'hardwareBackPress',
+        handlerBackButtonPress,
+      );
+    };
+  }, []);
+
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{ headerShown: false }}>
-        <Stack.Screen
-          name={routes.Home}
-          component={Home}
-          options={{ title: 'Welcome' }}
-        />
+        <Stack.Screen name={routes.Home} component={Home} />
         <Stack.Screen name={routes.Quiz} component={Quiz} />
         <Stack.Screen name={routes.Results} component={Results} />
       </Stack.Navigator>

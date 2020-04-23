@@ -1,4 +1,5 @@
 import styled from 'styled-components/native';
+import { ActivityIndicatorProps } from 'react-native';
 
 export const Card = styled.View`
   background: #24a1af;
@@ -34,4 +35,13 @@ export const BeginButtonText = styled.Text`
   color: #ffffff;
   font-weight: bold;
   font-size: 16px;
+`;
+
+export const Loading = styled.ActivityIndicator.attrs<ActivityIndicatorProps>(
+  () => ({
+    size: 'large',
+    color: '#ffffff',
+  }),
+)`
+  padding-bottom: 50px;
 `;

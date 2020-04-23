@@ -1,9 +1,5 @@
 import Api from '.';
 
-interface QuestionsQueryProps {
-  readonly amount: number;
-}
-
 interface QuestionsResult {
   readonly category: string;
   readonly type: string;
@@ -19,30 +15,25 @@ interface ResponseProps {
 }
 
 export interface QuestionsResponse {
-  readonly responseCode: number;
-  readonly results: Array<QuestionsResult>;
+  readonly status: number;
+  readonly responseCode: number | null;
+  readonly results: Array<QuestionsResult> | null;
 }
 
 /**
  * Get a list of questions
  * @param amount Amount of questions
  */
-const getQuestions = async ({ amount = 10 }: QuestionsQueryProps) => {
-  const { status, data } = await Api.get<ResponseProps>(
+async function getQuestions(amount = 10): Promise<QuestionsResponse> {
+  const { status, data } = await Api.get<ResponseProps | null>(
     `?amount=${amount}&difficulty=hard&type=boolean`,
   );
 
-  if (status === 200) {
-    return {
-      responseCode: data.response_code,
-      results: data.results,
-    } as QuestionsResponse;
-  }
-
   return {
-    responseCode: data.response_code,
-    results: [],
+    status,
+    responseCode: data?.response_code || null,
+    results: data?.results || null,
   } as QuestionsResponse;
-};
+}
 
-export default getQuestions;
+export { getQuestions };
