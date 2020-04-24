@@ -2,8 +2,6 @@
 
 # Trivia Game Coding Challenge - Wenderson Pires
 
-## Overview
-
 Mobile application developed using React Native for Android & iOS. This application was built for a process I'm participating [G2i] and was made from scratch using the provided wireframes to drive the initial UI development.
 
 Project developed using TypeScript and some packages for implementing features in the app. I'm also using tools for code quality, build and compiler, they are eslint, prettier, babel and others. Dynamic Context APIs is being used to create a theme provider component.
