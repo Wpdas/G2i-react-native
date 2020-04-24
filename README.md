@@ -10,8 +10,8 @@ Project developed using TypeScript and some packages for implementing features i
 
 **Native resources:** StyleSheet, Gesture Handler, Navigation, Platform, Vector Icons, and others;</br>
 **React & third-party hooks:** createContext, useContext, useState, useSelector, useDispatch;</br>
-**Third-party:** styled-components, axios, expo-font, html-entities, redux, redux-thunk.</br>
-**Font:** Varela Round
+**Third-party:** styled-components, axios, expo-font, html-entities, redux, redux-thunk;</br>
+**Font:** Varela Round;</br>
 **Tests:** Tested manually on Android and iOS. Despite this project hasn't automated tests, it's ready to handle tests using jest.
 
 ## :art: Demo GIF
