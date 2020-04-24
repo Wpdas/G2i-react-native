@@ -6,18 +6,16 @@ import light from './light';
 import fetchFonts from './fetchFonts';
 
 export type Theme = {
-  readonly nubankColor1: string;
-  readonly nubankColor2: string;
-  readonly nubankColor3: string;
-  readonly primaryColor: string;
-  readonly secondaryColor: string;
-  readonly tertiaryColor: string;
-  readonly primaryIconColor: string;
-  readonly secondaryIconColor: string;
-  readonly tertiaryIconColor: string;
-  readonly primaryTextColor: string;
-  readonly secondaryTextColor: string;
-  readonly tertiaryTextColor: string;
+  readonly color1: string;
+  readonly color2: string;
+  readonly color3: string;
+  readonly color4: string;
+  readonly color5: string;
+  readonly trueButtonColor: string;
+  readonly trueButtonBorderColor: string;
+  readonly falseButtonColor: string;
+  readonly falseButtonBorderColor: string;
+  readonly backgroundColor: string;
   readonly regularFont: string;
 };
 

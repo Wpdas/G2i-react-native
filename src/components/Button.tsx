@@ -1,11 +1,12 @@
 import React from 'react';
 import styled from 'styled-components/native';
 import { GestureResponderEvent } from 'react-native';
+import { ThemeProps } from '@theme';
 
 const BeginButton = styled.TouchableOpacity`
   justify-content: center;
   border-width: 1px;
-  border-color: #ffff;
+  border-color: ${(props: ThemeProps) => props.theme.current.color1};
   align-items: center;
   padding: 22px 20%;
   margin: 0 20px;
@@ -13,7 +14,7 @@ const BeginButton = styled.TouchableOpacity`
 `;
 
 const BeginButtonText = styled.Text`
-  color: #ffffff;
+  color: ${(props: ThemeProps) => props.theme.current.color1};
   font-size: 16px;
   font-family: 'VarelaRound-Regular';
 `;

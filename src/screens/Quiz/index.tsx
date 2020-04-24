@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { ThemeContext } from 'styled-components';
 import { XmlEntities } from 'html-entities';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 import { RouteNavigationProps, routes } from '@routes';
+import { ThemeContextValue } from '@theme';
 import Container from '@components/Container';
 import Header from '@components/Header';
 import Card from '@components/Card';
@@ -23,6 +25,7 @@ interface QuizProps {
 
 const Quiz: React.FC<QuizProps> = ({ navigation }: QuizProps) => {
   const dispatch = useDispatch();
+  const { current: theme } = useContext<ThemeContextValue>(ThemeContext);
   const [questionIndex, setQuestionIndex] = useState(0);
   const { questionsList } = useSelector<ReducersState, QuestionsState>(
     (state) => state.questions,
@@ -66,10 +69,10 @@ const Quiz: React.FC<QuizProps> = ({ navigation }: QuizProps) => {
       </Step>
       <Options>
         <FalseButton onPress={handlerOnPressFalseOption}>
-          <Icon name="times" size={50} color="#E1656D" />
+          <Icon name="times" size={50} color={theme.falseButtonBorderColor} />
         </FalseButton>
         <TrueButton onPress={handlerOnPressTrueOption}>
-          <Icon name="check" size={50} color="#4ACCA8" />
+          <Icon name="check" size={50} color={theme.trueButtonBorderColor} />
         </TrueButton>
       </Options>
     </Container>

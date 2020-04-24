@@ -1,9 +1,12 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useContext } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+
+import { ThemeContext } from 'styled-components';
 import { XmlEntities } from 'html-entities';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 import { RouteNavigationProps, routes } from '@routes';
+import { ThemeContextValue } from '@theme';
 import Container from '@components/Container';
 import Header from '@components/Header';
 import Button from '@components/Button';
@@ -29,6 +32,7 @@ interface ResultsProps {
 
 const Results: React.FC<ResultsProps> = ({ navigation }: ResultsProps) => {
   const dispatch = useDispatch();
+  const { current: theme } = useContext<ThemeContextValue>(ThemeContext);
   const { inGameAnswers } = useSelector<ReducersState, QuestionsState>(
     (state) => state.questions,
   );
@@ -42,11 +46,11 @@ const Results: React.FC<ResultsProps> = ({ navigation }: ResultsProps) => {
     <ScoreItem key={index}>
       {answer.isAnswerCorrect ? (
         <IconWrapper>
-          <Icon name="check" size={22} color="#4ACCA8" />
+          <Icon name="check" size={22} color={theme.trueButtonBorderColor} />
         </IconWrapper>
       ) : (
         <IconWrapper>
-          <Icon name="times" size={22} color="#E1656D" />
+          <Icon name="times" size={22} color={theme.falseButtonBorderColor} />
         </IconWrapper>
       )}
       <ScoreItemText>{entities.decode(answer.question)}</ScoreItemText>

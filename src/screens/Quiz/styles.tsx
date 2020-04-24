@@ -1,15 +1,18 @@
 import styled from 'styled-components/native';
+import { Platform } from 'react-native';
+import { ThemeProps } from '@theme';
 
 export const Step = styled.Text`
   font-size: 18px;
-  color: #e7e4f1;
+  color: ${(props: ThemeProps) => props.theme.current.color4};
   text-align: center;
   font-family: 'VarelaRound-Regular';
-  background: #362c65;
   align-self: center;
-  border-radius: 35px;
-  border-color: #5c4ba9;
+  border-radius: ${Platform.OS === 'ios' ? '22px' : '28px'};
+  border-color: ${(props: ThemeProps) => props.theme.current.color2};
   border-width: 2px;
+  background: ${(props: ThemeProps) =>
+    Platform.OS === 'ios' ? 'transparent' : props.theme.current.color5};
   padding: 12px 40px 10px 40px;
 `;
 
@@ -23,8 +26,9 @@ export const Options = styled.View`
 export const TrueButton = styled.TouchableOpacity`
   width: 120px;
   height: 100px;
-  background: #4acca820;
-  border-color: #4acca8;
+  background: ${(props: ThemeProps) => props.theme.current.trueButtonColor};
+  border-color: ${(props: ThemeProps) =>
+    props.theme.current.trueButtonBorderColor};
   border-width: 2px;
   border-radius: 10px;
   align-items: center;
@@ -34,8 +38,9 @@ export const TrueButton = styled.TouchableOpacity`
 export const FalseButton = styled.TouchableOpacity`
   width: 120px;
   height: 100px;
-  background: #e1656d20;
-  border-color: #e1656d;
+  background: ${(props: ThemeProps) => props.theme.current.falseButtonColor};
+  border-color: ${(props: ThemeProps) =>
+    props.theme.current.falseButtonBorderColor};
   border-width: 2px;
   border-radius: 10px;
   align-items: center;
