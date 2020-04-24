@@ -4,7 +4,8 @@ import { ThemeContext } from 'styled-components';
 import { XmlEntities } from 'html-entities';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-import { RouteNavigationProps, routes } from '@routes';
+import { RouteNavigationProps } from 'src/routes';
+import screensRoutes from '@routes/screensRoutes';
 import { ThemeContextValue } from '@theme';
 import Container from '@components/Container';
 import Header from '@components/Header';
@@ -36,7 +37,7 @@ const Quiz: React.FC<QuizProps> = ({ navigation }: QuizProps) => {
   const totalQuestions = questionsList.length;
 
   const finishGame = () => {
-    navigation.navigate(routes.Results);
+    navigation.navigate(screensRoutes.Results);
   };
 
   const registerAnswer = (userAnswer: boolean) => {

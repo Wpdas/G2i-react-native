@@ -2,7 +2,8 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Alert } from 'react-native';
 
-import { RouteNavigationProps, routes } from '@routes';
+import { RouteNavigationProps } from '@routes/index';
+import screensRoutes from '@routes/screensRoutes';
 import Container from '@components/Container';
 import Header from '@components/Header';
 import Card from '@components/Card';
@@ -46,7 +47,7 @@ const Home: React.FC<HomeProps> = ({ navigation }: HomeProps) => {
   }, [pending, error]);
 
   const handlerOnBeginButtonPress = () => {
-    navigation.navigate(routes.Quiz);
+    navigation.navigate(screensRoutes.Quiz);
   };
 
   return (

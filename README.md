@@ -68,7 +68,7 @@ The bases for the TypeScript import function are configured in the `tsconfig.jso
 '@theme': './src/theme/index.tsx',
 '@screens': './src/screens/',
 '@store': './src/store/',
-'@routes': './src/Routes.tsx',
+'@routes': './src/routes/',
 '@api': './src/api/',
 ```
 

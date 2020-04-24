@@ -5,7 +5,8 @@ import { ThemeContext } from 'styled-components';
 import { XmlEntities } from 'html-entities';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-import { RouteNavigationProps, routes } from '@routes';
+import { RouteNavigationProps } from 'src/routes';
+import screensRoutes from '@routes/screensRoutes';
 import { ThemeContextValue } from '@theme';
 import Container from '@components/Container';
 import Header from '@components/Header';
@@ -64,7 +65,7 @@ const Results: React.FC<ResultsProps> = ({ navigation }: ResultsProps) => {
   });
 
   const handlerOnPressPlayAgain = () => {
-    navigation.navigate(routes.Home);
+    navigation.navigate(screensRoutes.Home);
   };
 
   return (

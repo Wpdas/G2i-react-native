@@ -13,7 +13,7 @@ module.exports = function (api) {
             '@theme': './src/theme/index.tsx',
             '@screens': './src/screens/',
             '@store': './src/store/',
-            '@routes': './src/Routes.tsx',
+            '@routes': './src/routes/',
             '@api': './src/api/',
           },
         },
